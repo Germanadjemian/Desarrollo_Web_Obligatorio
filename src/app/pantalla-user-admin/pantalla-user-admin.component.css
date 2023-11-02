@@ -1,0 +1,54 @@
+/* Estilo para el contenedor principal */
+.pantalla-user-admin {
+    text-align: center;
+    background-color: #f0f0f0; /* Fondo gris */
+    padding: 40px; /* Doble padding */
+    border-radius: 20px; /* Mayor redondez en las esquinas */
+    width: 500px; /* Mayor ancho del contenedor */
+    margin: 0 auto;
+    margin-top: 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
+}
+
+/* Estilo para el título "Kahoot" */
+h1 {
+    color: #ff9900; /* Naranja al estilo de Kahoot */
+    font-size: 48px; /* Tamaño de fuente más grande */
+    margin-bottom: 40px; /* Espacio inferior aumentado */
+}
+
+/* Estilo para el subtítulo "Iniciar sesión" */
+h2 {
+    color: #333; /* Texto gris oscuro */
+    font-size: 36px; /* Tamaño de fuente más grande */
+    margin-bottom: 40px; /* Espacio inferior aumentado */
+}
+
+/* Estilo para los campos de entrada y el botón */
+input[type="text"],
+input[type="password"],
+button {
+    display: block;
+    margin: 20px auto; /* Mayor espacio entre elementos */
+    padding: 20px; /* Mayor relleno */
+    width: 100%;
+    border: 2px solid #ccc; /* Borde más grueso */
+    border-radius: 10px; /* Mayor redondez en las esquinas */
+    background-color: #fff; /* Fondo blanco */
+    font-size: 24px; /* Tamaño de fuente más grande */
+}
+
+/* Estilo para el botón de inicio de sesión */
+button {
+    background-color: #ff9900; /* Naranja al estilo de Kahoot */
+    color: #fff; /* Texto blanco */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transición suave de color de fondo */
+    font-size: 24px; /* Tamaño de fuente más grande */
+}
+
+/* Estilo para el botón al pasar el mouse sobre él */
+button:hover {
+    background-color: #e68a00; /* Naranja más oscuro al pasar el mouse */
+}
