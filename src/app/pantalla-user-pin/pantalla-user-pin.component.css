@@ -1,0 +1,63 @@
+/* Estilo para el contenedor principal */
+.pantalla-user-admin {
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 40px;
+    border-radius: 20px;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para el título "Kahoot" */
+h1 {
+    color: #ff9900;
+    font-size: 48px;
+    margin-bottom: 40px;
+}
+
+/* Estilo para el subtítulo "Iniciar sesión" */
+h2 {
+    color: #333;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+/* Estilo para los campos de entrada */
+input[type="text"],
+input[type="pin"] {
+    display: block;
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%; /* Establece un ancho fijo para los campos de entrada */
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 24px;
+    box-sizing: border-box;
+}
+
+/* Estilo para el botón de Jugar */
+button[type="Jugar"] {
+    display: block;
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%; /* Mismo ancho que los campos de entrada */
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #ff9900;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 24px;
+    box-sizing: border-box; /* Esta propiedad incluye el relleno en el ancho y alto */
+}
+
+/* Estilo para el botón al pasar el cursor sobre él */
+button[type="Jugar"]:hover {
+    background-color: #e68a00;
+}
+
+
