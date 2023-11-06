@@ -6,9 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./pantalla-admin-log-in.component.css']
 })
 export class PantallaAdminLogInComponent {
-
-  
-
-
+    
   }
 
