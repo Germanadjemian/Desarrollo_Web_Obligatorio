@@ -7,6 +7,8 @@ import { PantallaUserAdminComponent } from './pantalla-user-admin/pantalla-user-
 import { PantallaAdminLogInComponent } from './pantalla-admin-log-in/pantalla-admin-log-in.component';
 import { PantallaUserPinComponent } from './pantalla-user-pin/pantalla-user-pin.component';
 import { PantallaAdminCreateThingsComponent } from './pantalla-admin-create-things/pantalla-admin-create-things.component';
+import { PantallaAdminNewAccountComponent } from './pantalla-admin-new-account/pantalla-admin-new-account.component';
+import { PantallaCreateActivityComponent } from './pantalla-create-activity/pantalla-create-activity.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { PantallaAdminCreateThingsComponent } from './pantalla-admin-create-thin
     PantallaUserAdminComponent,
     PantallaAdminLogInComponent,
     PantallaUserPinComponent,
-    PantallaAdminCreateThingsComponent
+    PantallaAdminCreateThingsComponent,
+    PantallaAdminNewAccountComponent,
+    PantallaCreateActivityComponent
   ],
   imports: [
     BrowserModule,
