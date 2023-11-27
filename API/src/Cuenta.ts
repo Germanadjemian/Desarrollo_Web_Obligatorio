@@ -1,4 +1,4 @@
-import Actividad from "./routes/Actividad";
+import Actividad from "./Interfaces/Actividad";
 
 class Cuenta {
   gmail: string;

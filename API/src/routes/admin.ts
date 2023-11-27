@@ -1,6 +1,6 @@
 import express from 'express'
-import actividad from './Actividad';
-import usuario from '..';
+import actividad from '../Interfaces/Actividad';
+import usuario, { authenticate } from '..';
 import { stringify } from 'qs';
 const router = express.Router();
 
@@ -8,7 +8,7 @@ const router = express.Router();
 //ARRANCA LA CLASE
 
 //Crear Actividad
-router.post('/activity',(req,res)=>{
+router.post('/activity', authenticate,(req,res)=>{
   let activity: actividad = {
     title : req.body.title,
     description : req.body.description,
@@ -40,7 +40,7 @@ router.post('/activity',(req,res)=>{
 */
 
 //Mostrar Actividades 2
-router.get('/activity', (req, res) => {
+router.get('/activity', authenticate, (req, res) => {
   const actividades = usuario.activities;
   if (actividades.length > 0) {
     // Construir un mensaje legible para mostrar las actividades
@@ -60,15 +60,50 @@ router.get('/activity', (req, res) => {
 });
 
 
+// Eliminar Actividad
+router.delete('/activity/:title', authenticate, (req, res) => {
+  const titleToDelete = req.params.title;
+  const actividadIndex = usuario.activities.findIndex((actividad) => actividad.title === titleToDelete);
+
+  if (actividadIndex !== -1) {
+    usuario.activities.splice(actividadIndex, 1);
+    res.status(200).send(`Actividad "${titleToDelete}" eliminada exitosamente.`);
+  } else {
+    res.status(404).send(`No se encontró la actividad "${titleToDelete}".`);
+  }
+});
+
+
+// Actualizar Actividad
+router.put('/activity/:title', authenticate, (req, res) => {
+  const titleToUpdate = req.params.title;
+  const actividadIndex = usuario.activities.findIndex((actividad) => actividad.title === titleToUpdate);
+
+  if (actividadIndex !== -1) {
+    usuario.activities[actividadIndex] = {
+      title: req.body.title || usuario.activities[actividadIndex].title,
+      description: req.body.description || usuario.activities[actividadIndex].description,
+      image: req.body.image || usuario.activities[actividadIndex].image,
+    };
+
+    res.status(200).send(`Actividad "${titleToUpdate}" actualizada exitosamente.`);
+  } else {
+    res.status(404).send(`No se encontró la actividad "${titleToUpdate}".`);
+  }
+});
+
+
+
 //Crear Propuesta
-router.post('/crearPropuesta',(req,res) =>{
+router.post('/crearPropuesta', authenticate,(req,res) =>{
   let propuesta = {
+    id:req.body.id,
     propuesta:req.body.propuesta
   }
   
   let todoOk= true
   console.log("EL REQ BODY es: "+req.body.propuesta + "\n")
-  let texto = req.body.propuesta
+  let texto = req.body.propuesta//                  ESTE ES EL BUENO
   let texto2 = JSON.stringify(req.body.propuesta)
   let texto3= stringify(propuesta.propuesta)
   texto3.trim()
@@ -118,22 +153,23 @@ router.post('/crearPropuesta',(req,res) =>{
 });
 
   
-//Mostrar Propuestas
-router.get('/propuestas', (req, res) => {
+// Mostrar Propuestas
+router.get('/propuestas', authenticate, (req, res) => {
   const propuestas = usuario.propuestas;
 
   if (propuestas.length > 0) {
     let mensaje = 'Propuestas disponibles:\n';
 
     propuestas.forEach((lista, index) => {
-      mensaje += `PROPUESTA ${index + 1}:\n`;
+      const propuestaId = index; // ID de la propuesta
+      mensaje += `PROPUESTA ${index + 1} (ID: ${propuestaId}):\n`;
 
       lista.forEach((actividad, actividadIndex) => {
-        mensaje += `Actividad ${actividadIndex + 1}:\n`;
-        mensaje += `  Título: ${actividad.title}\n`;
-        mensaje += `  Descripción: ${actividad.description}\n`;
-        mensaje += `  Imagen: ${actividad.image ? actividad.image : 'No disponible'}\n`;
-        mensaje += '-----------------\n';
+        mensaje += `  Actividad ${actividadIndex + 1}:\n`;
+        mensaje += `    Título: ${actividad.title}\n`;
+        mensaje += `    Descripción: ${actividad.description}\n`;
+        mensaje += `    Imagen: ${actividad.image ? actividad.image : 'No disponible'}\n`;
+        mensaje += '  -----------------\n';
       });
     });
 
@@ -143,7 +179,35 @@ router.get('/propuestas', (req, res) => {
   }
 });
 
-  
+
+
+// Eliminar Propuesta (la idea es que el id del get es el indice en la lista)
+router.delete('/propuestas/:propuestaIndex', authenticate, (req, res) => {
+  const propuestaIndex:any = req.params.propuestaIndex;
+
+  if (usuario.propuestas[propuestaIndex]) {
+    usuario.propuestas.splice(propuestaIndex, 1);
+    res.status(200).send(`Propuesta en índice ${propuestaIndex} eliminada exitosamente.`);
+  } else {
+    res.status(404).send(`No se encontró la propuesta en índice ${propuestaIndex}.`);
+  }
+});
+
+
+
+// Actualizar Propuesta
+router.put('/propuestas/:propuestaIndex', authenticate, (req, res) => {
+  const propuestaIndex:any = req.params.propuestaIndex;
+
+  if (usuario.propuestas[propuestaIndex]) {
+    usuario.propuestas[propuestaIndex] = req.body.nuevaListaDeActividades;
+
+    res.status(200).send(`Propuesta en índice ${propuestaIndex} actualizada exitosamente.`);
+  } else {
+    res.status(404).send(`No se encontró la propuesta en índice ${propuestaIndex}.`);
+  }
+});
+
 
 
 
