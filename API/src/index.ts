@@ -18,6 +18,44 @@ app.listen(PORT, () => {
   console.log(`Server running 123 on port ${PORT}`)
 });
 
+const cors = require('cors');
+
+var corsOptions = {
+    origin: 'http://localhost:4200',
+    optionsSuccessStatus: 200,
+    methods: "GET, PUT, POST, DELETE"
+};
+
+app.use(cors(corsOptions));
+////////////////////////////////////////////////////////////
+
+/* JWT *////////////////////////////////////////////////////
+export const jwt = require('jsonwebtoken');
+
+export function generateAccessToken(usuario: string) {
+    return jwt.sign({ usuario: usuario }, 'miClaveSecreta', { expiresIn: '1h' });
+}
+
+
+export function authenticate(req: any, res: any, next: any) {
+  const authorizationHeader = req.headers.authorization;
+  if (!authorizationHeader) {
+      return res.status(401).send({ message: "Unauthorized" });
+  } else {
+      const token: string = authorizationHeader.split(' ')[1];
+      try {
+          jwt.verify(token, 'shhhhh');
+          next();
+      } catch (err: any) {
+          if (err.name === 'TokenExpiredError') {
+              res.status(401).send({ message: "TokenExpiredError" });
+          } else {
+              const error = new Error("Error! Something went wrong.");
+              return next(error);
+          }
+      }
+  }
+}
 
 
 app.get('/test', (req, res) => {    
@@ -115,9 +153,12 @@ const usuario = new Cuenta('','');
     if(!enviado){
       if(verificarContraseña(req.body.pass)){
 
-        cuentas.push(cuenta) 
-        res.status(200).send("Cuenta creada exitosamente\n"+JSON.stringify(cuentas));
-        console.log("probando el metodo")
+        cuentas.push(cuenta)
+        const token = generateAccessToken(req.body.usuario);
+        res.status(200).send({ token: token });
+
+        //res.status(200).send("Cuenta creada exitosamente\n"+JSON.stringify(cuentas));
+        //console.log("probando el metodo")
         //res.send("Cuenta creada exitosamente")
       }
       else {
@@ -152,7 +193,7 @@ const usuario = new Cuenta('','');
       usuario.activities=cuentaEncontrada.activities
     } else {
       res.status(404).send("Cuenta no encontrada");
-      console.log("NOOOO PAPA NOOO")
+      console.log("NOOOO")
     }
   });
 
@@ -166,8 +207,3 @@ const usuario = new Cuenta('','');
   
 export default usuario
   
-
-  
-
-
-
