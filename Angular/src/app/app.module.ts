@@ -9,6 +9,9 @@ import { PantallaUserPinComponent } from './pantalla-user-pin/pantalla-user-pin.
 import { PantallaAdminCreateThingsComponent } from './pantalla-admin-create-things/pantalla-admin-create-things.component';
 import { PantallaAdminNewAccountComponent } from './pantalla-admin-new-account/pantalla-admin-new-account.component';
 import { PantallaCreateActivityComponent } from './pantalla-create-activity/pantalla-create-activity.component';
+import { PantallaProposalComponent } from './pantalla-proposal/pantalla-proposal.component';
+import { PantallaGameComponent } from './pantalla-game/pantalla-game.component';
+import { PantallaLobbyComponent } from './pantalla-lobby/pantalla-lobby.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { PantallaCreateActivityComponent } from './pantalla-create-activity/pant
     PantallaUserPinComponent,
     PantallaAdminCreateThingsComponent,
     PantallaAdminNewAccountComponent,
-    PantallaCreateActivityComponent
+    PantallaCreateActivityComponent,
+    PantallaProposalComponent,
+    PantallaGameComponent,
+    PantallaLobbyComponent
   ],
   imports: [
     BrowserModule,

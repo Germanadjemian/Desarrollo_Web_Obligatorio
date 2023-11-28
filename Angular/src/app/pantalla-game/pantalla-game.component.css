@@ -1,0 +1,21 @@
+/* pantalla-proposal.component.css */
+
+
+.pantalla-game {
+    text-align: center;
+    background-color: #f0f0f0; /* Fondo gris */
+    padding: 40px; /* Doble padding */
+    border-radius: 20px; /* Mayor redondez en las esquinas */
+    width: 500px; /* Mayor ancho del contenedor */
+    margin: 0 auto;
+    margin-top: 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
+}
+
+.pantalla-game h1 {
+    color: #ff9900; /* naranja */
+}
+
+.pantalla-game h2 {
+    color: #ff9900; /* naranja */
+}
