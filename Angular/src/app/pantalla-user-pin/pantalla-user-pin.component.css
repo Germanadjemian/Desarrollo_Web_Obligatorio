@@ -38,25 +38,30 @@ input[type="pin"] {
     box-sizing: border-box;
 }
 
-/* Estilo para el botón de Jugar */
-button[type="Jugar"] {
+button {
     display: block;
     margin: 20px auto;
     padding: 20px;
-    width: 80%; /* Mismo ancho que los campos de entrada */
+    width: 100%; /* Ancho fijo del 100% para igualar el ancho de los campos de entrada y los botones */
     border: 2px solid #ccc;
     border-radius: 10px;
+    background-color: #fff;
+    font-size: 24px;
+    box-sizing: border-box;
+}
+
+/* Estilo para el botón de inicio de sesión */
+button {
     background-color: #ff9900;
     color: #fff;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
     font-size: 24px;
-    box-sizing: border-box; /* Esta propiedad incluye el relleno en el ancho y alto */
 }
 
-/* Estilo para el botón al pasar el cursor sobre él */
-button[type="Jugar"]:hover {
+/* Estilo para el botón al pasar el mouse sobre él */
+button:hover {
     background-color: #e68a00;
 }
 
