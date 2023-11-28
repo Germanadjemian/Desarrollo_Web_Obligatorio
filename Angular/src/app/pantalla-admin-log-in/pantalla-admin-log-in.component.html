@@ -1,21 +1,20 @@
 <html>
 <head>
-    <link rel="stylesheet"  href ="pantalla-admin-log-in.component.css">
+    <link rel="stylesheet"  href="pantalla-admin-log-in.component.css">
 </head>
 <body>
-    <div class="pantalla-user-admin">
+    <div class="pantalla-log-in">
+        <a href="/">&#8592; Volver</a>
         <h1>Kahoot</h1>
         <h2>Iniciar sesión</h2>
-            <form>
-                <input type="text" placeholder="Correo electrónico" required autocomplete="new-email">
-                <input type="password" placeholder="Contraseña" required autocomplete="new-password">
-                
-                <button [routerLink]="'/inicioSesion'">Iniciar Sesion</button>
-
-                <button [routerLink]="'/adminNewAccount'">Crear Cuenta</button>
-            </form>
+        <form>
+            <input type="text" placeholder="Correo electrónico" required autocomplete="new-email">
+            <input type="password" placeholder="Contraseña" required autocomplete="new-password">
+                        
+            <button [routerLink]="'/create'">Iniciar Sesión</button>
+            
+            <button [routerLink]="'/adminNewAccount'">Crear Cuenta</button>
+        </form>
     </div>
-    
-    
 </body>
 </html>

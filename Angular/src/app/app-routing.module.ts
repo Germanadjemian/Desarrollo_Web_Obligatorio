@@ -6,15 +6,20 @@ import { PantallaUserPinComponent } from './pantalla-user-pin/pantalla-user-pin.
 import { PantallaAdminCreateThingsComponent } from './pantalla-admin-create-things/pantalla-admin-create-things.component';
 import { PantallaAdminNewAccountComponent } from './pantalla-admin-new-account/pantalla-admin-new-account.component';
 import { PantallaCreateActivityComponent } from './pantalla-create-activity/pantalla-create-activity.component';
+import { PantallaProposalComponent } from './pantalla-proposal/pantalla-proposal.component';
+import { PantallaGameComponent } from './pantalla-game/pantalla-game.component';
+import { PantallaLobbyComponent } from './pantalla-lobby/pantalla-lobby.component';
 
 const routes: Routes = [
-  {path: 'inicial',component: PantallaUserAdminComponent},
+  {path: '',component: PantallaUserAdminComponent},
   { path: 'admin', component: PantallaAdminLogInComponent },
   { path: 'user', component: PantallaUserPinComponent },
-  { path: '', component: PantallaUserAdminComponent },
-  { path: 'inicioSesion', component: PantallaUserAdminComponent },
+  { path: 'create', component: PantallaAdminCreateThingsComponent },
   { path: 'adminNewAccount', component: PantallaAdminNewAccountComponent },
-  {path: 'activity',component: PantallaCreateActivityComponent}
+  {path: 'activity',component: PantallaCreateActivityComponent},
+  {path: 'proposal', component: PantallaProposalComponent},
+  {path: 'game', component:PantallaGameComponent},
+  {path: 'lobby', component:PantallaLobbyComponent}
   ];
 
 @NgModule({
